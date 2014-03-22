@@ -1,32 +1,79 @@
+var tacApp = angular.module('tacApp', ['ngRoute', 'textAngular']);
+
+//Define Routes
+tacApp.config(['$routeProvider', defineRoutes]);
 
 
-var tacApp = angular.module('tacApp', []);
 
-tacApp.controller('SlidesCtrl', function($scope){
 
-	$scope.slides = [
-		{"number": 1,
-		 "title": "Introduction",
-		 "content": "History of AngularJS",
-		 "isEdited": false
-		},
-		{"number": 2,
-		 "title": "Template",
-		 "content": "Templates work great",
- 		 "isEdited": false			
-		}
-	];
+var TemplateController = function($scope, $rootScope) {
 
-	var resetOtherEditFlags = function(){
-		for (slide in slides){
-			if 	(slide == currentSlide)
-				slide.isEdited = true;
-			else {
-				slide.isEdited = false,
-			}
-		}
-		
-	};
+    /*$('.textarea').wysihtml5();
+    
+    alert(
+    document.getElementsByClassName('textarea').innerHTML
+    );*/
+   
+    $scope.items = $rootScope.items;
 
-	$scope.currentSlide=slides[0];
+    $scope.synchRootScope = function() {
+        console.log("info", "Laueft");
+        $rootScope.items = $scope.items;
+    };
+    
+    $scope.selectIndex = function(index) {
+        $scope.selectedIndex = index;
+    };
+    
+    
+    
+    
+
+};
+
+tacApp.controller('templateController', TemplateController);
+
+tacApp.controller('InitController', function($rootScope) {
+
+    if (!$rootScope.items) {
+        $rootScope.items = [
+            {"id": 1,
+                "title": "Introduction",
+                "created": new Date(),
+                "content": "History of AngularJS",
+                "visible": true,
+                "desc" : "Lalalalal"
+            },
+            {"id": 2,
+                "title": "Introduction2",
+                "created": new Date(),
+                "content": "History of AngularJS2",
+                "visible": true,
+                "desc" : "Lalalalal2"
+            }
+        ];
+    }
+
 });
+
+
+
+
+/*
+ 
+ tacApp.controller('SlidesCtrl', function($scope) {
+ 
+ 
+ 
+ var resetOtherEditFlags = function() {
+ for (slide in slides) {
+ if (slide == currentSlide) {
+ slide.isEdited = true;
+ }
+ else {
+ slide.isEdited = false
+ }
+ }
+ 
+ };
+ });*/

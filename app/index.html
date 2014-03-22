@@ -1,31 +1,46 @@
 <!doctype html>
 <html lang="en" ng-app="tacApp">
-<head>
-  <meta charset="utf-8">
-  <title>T@C - AngularJS</title>
-  <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <script src="lib/angular/angular.js"></script>
-  <script src="js/controllers.js"></script>
-</head>
-<body ng-controller="SlidesCtrl">
+    <head>
+        <meta charset="utf-8">
+        <title>T@C - AngularJS</title>
+        
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/bootstrap-theme.css" />
+        <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css'>
+        <link rel="stylesheet" href="css/app.css" />
+        
+        <style type="text/css">
+            .ta-editor {
+  min-height: 100px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%;
+}
+            
+        </style>
+    </head>
+    <body ng-controller="InitController">
+        
+        
+        <div ng-view>
+            
+        </div>
 
-  <table class="slides_overview">
-    <tr class="headrow"> 
-      <td>Number</td>
-      <td>Title</td>
-      <td>Content</td>
-      <td>Edit</td>
-    </tr>
-    <tr ng-repeat="slide in slides">
-      <td>{{slide.number}}</td>
-      <td>{{slide.title}}</td>
-      <td>{{slide.content}}</td>
-      <td><input type="radio" ng-action="resetOtherEditFlags"/></td>
-    </tr> 
-  </table>
-
-
-
-</body>
+        <script src="lib/jquery/jquery-1.10.2.js"></script>
+        <script src="lib/bootstrap/bootstrap.min.js"></script>
+       
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/angular/angular-route.min.js"></script>
+        <script src="lib/angular/angular-sanitize.min.js"></script>
+        <script src="lib/angular/textAngular.js"></script>
+        
+        
+        <script src="js/routes.js"></script>
+        
+        <!--<script src="lib/bootstrap/editor.js"></script>
+        <script src="lib/bootstrap/bootstrap-editor.js"></script>
+        -->
+        <script src="js/controllers.js"></script>
+    </body>
 </html>

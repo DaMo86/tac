@@ -7,3 +7,16 @@ body {
 .headrow{
 	min-width: 100px;
 }
+
+.selectedRow {
+    background-color: orange;
+}
+
+.table tbody tr:hover td {
+    background-color: transparent;
+}
+
+.table tbody tr:hover td {
+    cursor: pointer;
+}
+

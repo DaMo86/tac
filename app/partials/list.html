@@ -1,0 +1,56 @@
+<h1 style="font-size: 1.5em; margin-top:0;margin-bottom: 20px;">Template Manager - &Uuml;bersicht</h1>
+
+
+<form name="templateForm">
+    
+    <div>
+        <label for="title">Titel
+        </label>
+        <input type="text" class="form-control" id="title" ng-model="items[selectedIndex].title"  />
+        
+        <br /><br />
+        <label for="description">Beschreibung
+        </label>
+        <div text-angular="text-angular" name="htmlcontent" ng-model="items[selectedIndex].desc" ta-disabled='disabled'></div>
+        <!--<textarea class="textarea" id="description" ng-model="items[selectedIndex].desc" style="display: none;">
+            
+        </textarea>-->
+        
+        
+        
+    </div>
+    
+    
+    <hr style="border-width: 3px;" />
+    
+    
+    <table class="table" style="margin-top:10px;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Created</th>
+                <th>Title</th>
+                <th>Visible</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat-start="item in items" ng-class="{selectedRow : $index === selectedIndex}" ng-click="selectIndex($index)">
+                <td>{{item.id}}</td>
+                <td>{{item.created | date : "yyyy-MM-dd HH:mm:ss"}}</td>
+                <td>{{item.title}}</td>
+               <!-- <td><input type="checkbox" ng-model="item.visible" /></td>-->
+               <td>&bull;</td>
+            </tr>
+            <tr ng-if="$index === selectedIndex" ng-repeat-end>
+                <td colspan="4" ng-bind-html="item.desc"></td>
+                
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    <div style="width:100%;">
+    <a href="#/list" class="btn btn-default" >Reload</a>
+</div>
+    
+</form>
