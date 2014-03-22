@@ -8,16 +8,17 @@
         </label>
         <input type="text" class="form-control" id="title" ng-model="items[selectedIndex].title"  />
         
-        <br /><br />
+        
+        <br />
+        
+        <label for="visible">Visible
+        </label>
+        <input type="checkbox" id="visible" ng-model="items[selectedIndex].visible"  />
+        
+        <br />
         <label for="description">Beschreibung
         </label>
         <div text-angular="text-angular" name="htmlcontent" ng-model="items[selectedIndex].desc" ta-disabled='disabled'></div>
-        <!--<textarea class="textarea" id="description" ng-model="items[selectedIndex].desc" style="display: none;">
-            
-        </textarea>-->
-        
-        
-        
     </div>
     
     
@@ -35,11 +36,11 @@
         </thead>
         <tbody>
             <tr ng-repeat-start="item in items" ng-class="{selectedRow : $index === selectedIndex}" ng-click="selectIndex($index)">
-                <td>{{item.id}}</td>
-                <td>{{item.created | date : "yyyy-MM-dd HH:mm:ss"}}</td>
+                <td style="width: 1em;">{{item.id}}</td>
+                <td style="width: 15em;">{{item.created | date : "yyyy-MM-dd HH:mm:ss"}}</td>
                 <td>{{item.title}}</td>
                <!-- <td><input type="checkbox" ng-model="item.visible" /></td>-->
-               <td>&bull;</td>
+               <td style="width: 1em; text-align: center;"><span ng-if="item.visible" style="font-weight: bolder;font-size: 1.2em;">&bull;</span></td>
             </tr>
             <tr ng-if="$index === selectedIndex" ng-repeat-end>
                 <td colspan="4" ng-bind-html="item.desc"></td>
