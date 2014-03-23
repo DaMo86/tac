@@ -1,30 +1,49 @@
-<h1 style="font-size: 1.5em; margin-top:0;margin-bottom: 20px;">Template Manager - &Uuml;bersicht</h1>
+<div style="margin:1em;">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Administration</a></li>
+                    <li><a href="#/preview">Pr&auml;sentation starten</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 style="font-size: 1.5em; margin-top:0;margin-bottom: 20px; margin-left:1em;">Template Manager - &Uuml;bersicht</h1>
 
 
-<form name="templateForm">
-    
-    <div>
-        <label for="title">Titel
-        </label>
-        <input type="text" class="form-control" id="title" ng-model="items[selectedIndex].title"  />
-        
-        
-        <br />
-        
-        <label for="visible">Visible
-        </label>
-        <input type="checkbox" id="visible" ng-model="items[selectedIndex].visible"  />
-        
-        <br />
-        <label for="description">Beschreibung
-        </label>
-        <div text-angular="text-angular" name="htmlcontent" ng-model="items[selectedIndex].desc" ta-disabled='disabled'></div>
-    </div>
-    
-    
+    <form class="form-horizontal" role="form" name="templateForm">
+
+        <div class="form-group">
+
+            <label for="title" class="col-sm-2 control-label" >Titel
+            </label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="title" ng-model="items[selectedIndex].title"  />
+            </div>
+            <div class="col-sm-3">
+                <div class="checkbox">
+                    <input type="checkbox" id="visible" ng-model="items[selectedIndex].visible"  />
+                    <label for="visible" class="control-label" >Visible</label>
+                </div>
+            </div>
+        </div>    
+
+        <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">Beschreibung</label>
+            <div class="col-sm-7">
+                <text-angular ta-toolbar="[['bold','italics','underline','ul','ol','html']]" ta-toolbar-class="btn-toolbar" name="htmlcontent" ng-model="items[selectedIndex].desc" ta-disabled='disabled'></text-angular>
+                <!--<div text-angular="text-angular" ta-toolbar-class="btn-toolbar" name="htmlcontent" ng-model="items[selectedIndex].desc" ta-disabled='disabled'></div>-->
+            </div>
+        </div>
+
+    </form>    
+
     <hr style="border-width: 3px;" />
-    
-    
+
+
     <table class="table" style="margin-top:10px;">
         <thead>
             <tr>
@@ -37,21 +56,15 @@
         <tbody>
             <tr ng-repeat-start="item in items" ng-class="{selectedRow : $index === selectedIndex}" ng-click="selectIndex($index)">
                 <td style="width: 1em;">{{item.id}}</td>
-                <td style="width: 15em;">{{item.created | date : "yyyy-MM-dd HH:mm:ss"}}</td>
+                <td style="width: 15em;">{{item.created| date : "yyyy-MM-dd HH:mm:ss"}}</td>
                 <td>{{item.title}}</td>
-               <!-- <td><input type="checkbox" ng-model="item.visible" /></td>-->
-               <td style="width: 1em; text-align: center;"><span ng-if="item.visible" style="font-weight: bolder;font-size: 1.2em;">&bull;</span></td>
+                <!-- <td><input type="checkbox" ng-model="item.visible" /></td>-->
+                <td style="width: 1em; text-align: center;"><span ng-if="item.visible" style="font-weight: bolder;font-size: 1.2em;">&bull;</span></td>
             </tr>
-            <tr ng-if="$index === selectedIndex" ng-repeat-end>
+            <tr ng-if="$index === selectedIndex && 1===2" ng-repeat-end>
                 <td colspan="4" ng-bind-html="item.desc"></td>
-                
+
             </tr>
         </tbody>
     </table>
-    
-    
-    <div style="width:100%;">
-    <a href="#/list" class="btn btn-default" >Reload</a>
 </div>
-    
-</form>

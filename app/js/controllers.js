@@ -3,16 +3,11 @@ var tacApp = angular.module('tacApp', ['ngRoute', 'textAngular']);
 //Define Routes
 tacApp.config(['$routeProvider', defineRoutes]);
 
-
-
-
 var TemplateController = function($scope, $rootScope) {
-
-    /*$('.textarea').wysihtml5();
     
-    alert(
-    document.getElementsByClassName('textarea').innerHTML
-    );*/
+    if($rootScope.items && $rootScope.items.length > 0) {
+        $scope.selectedIndex = 0;
+    }
    
     $scope.items = $rootScope.items;
 
@@ -25,10 +20,6 @@ var TemplateController = function($scope, $rootScope) {
         $scope.selectedIndex = index;
     };
     
-    
-    
-    
-
 };
 
 tacApp.controller('templateController', TemplateController);
