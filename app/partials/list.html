@@ -1,49 +1,8 @@
 <div style="margin:1em;">
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="container-fluid">
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Administration</a></li>
-                    <li><a href="#/preview">Pr&auml;sentation starten</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <h1 style="font-size: 1.5em; margin-top:0;margin-bottom: 20px; margin-left:1em;">Template Manager - &Uuml;bersicht</h1>
 
 
-    <form class="form-horizontal" role="form" name="templateForm">
-
-        <div class="form-group">
-
-            <label for="title" class="col-sm-2 control-label" >Titel
-            </label>
-            <div class="col-sm-7">
-                <input type="text" class="form-control" id="title" ng-model="items[selectedIndex].title"  />
-            </div>
-            <div class="col-sm-3">
-                <div class="checkbox">
-                    <input type="checkbox" id="visible" ng-model="items[selectedIndex].visible"  />
-                    <label for="visible" class="control-label" >Visible</label>
-                </div>
-            </div>
-        </div>    
-
-        <div class="form-group">
-            <label for="description" class="col-sm-2 control-label">Beschreibung</label>
-            <div class="col-sm-7">
-                <text-angular ta-toolbar="[['bold','italics','underline','ul','ol','html']]" ta-toolbar-class="btn-toolbar" name="htmlcontent" ng-model="items[selectedIndex].desc" ta-disabled='disabled'></text-angular>
-                <!--<div text-angular="text-angular" ta-toolbar-class="btn-toolbar" name="htmlcontent" ng-model="items[selectedIndex].desc" ta-disabled='disabled'></div>-->
-            </div>
-        </div>
-
-    </form>    
-
-    <hr style="border-width: 3px;" />
-
-
+    <h1 style="font-size: 1.5em; margin-top:0;margin-bottom: 20px; margin-left:1em;">Template Manager - Übersicht</h1>
+    
     <table class="table" style="margin-top:10px;">
         <thead>
             <tr>
@@ -67,4 +26,45 @@
             </tr>
         </tbody>
     </table>
-</div>
+
+    <br />
+
+    <hr style="border-width: 3px;" />
+
+    <br />
+
+    <form class="form-horizontal" role="form" name="templateForm">
+
+        <div class="form-group">
+
+            <label for="title" class="col-sm-2 control-label" >Titel
+            </label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="title" ng-model="items[selectedIndex].title"  />
+            </div>
+            <div class="col-sm-3">
+                <div class="checkbox">
+                    <input type="checkbox" id="visible" ng-model="items[selectedIndex].visible"  />
+                    <label for="visible" class="control-label" >Visible</label>
+                </div>
+            </div>
+        </div>    
+
+        <div class="form-group">
+
+            <label for="description" class="col-sm-2 control-label">Beschreibung</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="description" ng-model="items[selectedIndex].desc"  />
+            </div>
+        </div> 
+
+        <div class="form-group">
+            <label for="htmlcontent" class="col-sm-2 control-label">Inhalt</label>
+            <div class="col-sm-7">
+                <text-angular ta-toolbar="[['bold','italics','underline','ul','ol','html']]" ta-toolbar-class="btn-toolbar" name="htmlcontent" ng-model="items[selectedIndex].content" ta-disabled='disabled'></text-angular>
+                <!--<div text-angular="text-angular" ta-toolbar-class="btn-toolbar" name="htmlcontent" ng-model="items[selectedIndex].desc" ta-disabled='disabled'></div>-->
+            </div>
+        </div>
+
+    </form>    
+

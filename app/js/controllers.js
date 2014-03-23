@@ -9,7 +9,18 @@ var TemplateController = function($scope, $rootScope) {
         $scope.selectedIndex = 0;
     }
    
+    var getLastIndex = function(items){
+        console.log("calculate last index");
+        lastIndex = 0;
+        for (var i = items.length - 1; i >= 0; i--) {
+            if (items[i].id > lastIndex) {
+                lastIndex = items[i].id;
+            };
+        };
+    };
+
     $scope.items = $rootScope.items;
+    var lastIndex = getLastIndex($scope.items);
 
     $scope.synchRootScope = function() {
         console.log("info", "Laueft");
@@ -19,7 +30,20 @@ var TemplateController = function($scope, $rootScope) {
     $scope.selectIndex = function(index) {
         $scope.selectedIndex = index;
     };
+
+    $scope.addNewTemplate = function(title, description, content) {
+        lastIndex = lastIndex + 1;
+        $scope.items.push({"id": lastIndex,
+                "title": title,
+                "created": new Date(),
+                "content": content,
+                "visible": true,
+                "desc" : description
+            });
+        $scope.synchRootScope;
+    };
     
+
 };
 
 tacApp.controller('templateController', TemplateController);
@@ -43,9 +67,35 @@ tacApp.controller('InitController', function($rootScope) {
                 "desc" : "Lalalalal2"
             }
         ];
-    }
+    };
 
+    $rootScope.getClass = function(path) {
+        if ($location.path().substr(0, path.length) == path) {
+          return "active"
+        } else {
+          return ""
+        }
+    };
 });
+
+
+tacApp.directive('activeLink', ['$location', function(location) {
+    return {
+      restrict: 'A',
+      link: function(scope, element, attrs, controller) {
+        var path = attrs.href;
+        path = path.substring(1); //hack because path does not return including hashbang
+        scope.location = location;
+        scope.$watch('location.path()', function(newPath) {
+          if (path === newPath) {
+            element.parent().addClass("active");
+          } else {
+            element.parent().removeClass("active");
+          }
+        });
+      }
+    };
+  }]);
 
 
 
