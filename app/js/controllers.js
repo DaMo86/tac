@@ -41,8 +41,13 @@ var SlideController = function($scope, $location){
 
 };
 
-tacApp.controller('slideController', SlideController);
+var PresenterController = function($routeParams) {
+    var index = $routeParams.slide - 1;
+    $scope.selectedSlide = items[index];
+};
 
+tacApp.controller('slideController', SlideController);
+tacApp.controller('presenterController', PresenterController);
 
 var RouterConfig = function($routeProvider){
     $routeProvider.when('/list', {
@@ -51,6 +56,9 @@ var RouterConfig = function($routeProvider){
     }).when('/add', {
         controller: 'slideController',
         templateUrl: 'partials/add_template.html'
+    }).when('/start/:slide', {
+        controller: 'presenterController',
+        templateUrl: 'partials/praese.html'
     }).otherwise({
         redirectTo: '/list'
     });

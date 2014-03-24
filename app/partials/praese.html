@@ -1,32 +1,9 @@
 
-<div id="header" class="row">
-    <div class="col-md-12">
 
         <h1>Cofinpro - AngularJS</h1>
-        <h2>{{selectedItem.title}}</h2>
-    </div>
-</div>
-<div id="content"  class="row">
-    <div class="col-md-12">
-        {{selectedItem.desc}}
-    </div>
-</div>
-
-
-
-<div id="navigation" class="row">
-    <div class="col-md-12">
-        <hr />
-        <button ng-click="showPrevious()">Zur&uuml;ck</button>
-        <button ng-click="showNext()">Vor</button>
-        <hr />
-    </div>
-</div>
-
-<div id="footer"  class="row">
-    <div class="col-md-12">
-        Daniel Moritz, Conrad Finkelstein - Confinpro AG
-    </div>
-</div>
+        <h2>{{selectedSlide.title}}</h2>
+        <div>
+            {{selectedSlide.content}}
+        </div>
 
 
