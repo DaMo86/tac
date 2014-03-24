@@ -17,10 +17,3 @@ var items = [
 
 
 var tacApp = angular.module('tacApp', []);
-
-var SlideController = function($scope){
-
-    $scope.items = items;
-};
-
-tacApp.controller('slideController', SlideController);
