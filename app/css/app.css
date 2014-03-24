@@ -1,11 +1,11 @@
 /* app css stylesheet */
 
 body {
-  padding-top: 20px;
+    padding-top: 20px;
 }
 
 .headrow{
-	min-width: 100px;
+    min-width: 100px;
 }
 
 .selectedRow {
@@ -18,5 +18,54 @@ body {
 
 .table tbody tr:hover td {
     cursor: pointer;
+}
+
+body {
+    background-color: #f7f7f7;
+    font-family: Arial;
+}
+
+#top_navigation {
+    background-color: black;
+}
+
+#page {
+    margin:0.5em;
+    border:1px solid black;
+}
+
+h1 {
+    margin:0;
+    padding:0;
+    font-size: 2em;
+    font-weight: bold;
+    color: orange;
+}
+
+h2 {
+    font-size: 1.8em;
+    text-decoration: underline;
+}
+
+#header, #content, #navigation {
+    padding:1em;
+}
+
+#add_button {
+    background-color: limegreen;
+}
+
+#footer {
+    text-align: right;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.ta-editor {
+    min-height: 100px;
+    height: 100px;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
 }
 

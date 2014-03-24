@@ -11,6 +11,10 @@ var defineRoutes = function($routeProvider) {
             when('/start', {
                 templateUrl: 'partials/praese.html',
                 controller: 'presenterController'
+            }). 
+            when('/add',{
+            	templateUrl: 'partials/add_template.html',
+            	controller: 'templateController'
             }).
             otherwise({
                 redirectTo: '/list'
