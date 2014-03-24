@@ -18,7 +18,7 @@ var items = [
 
 var tacApp = angular.module('tacApp', ['ngRoute']);
 
-var SlideController = function($scope){
+var SlideController = function($scope, $location){
 
     $scope.items = items;
 
@@ -27,6 +27,18 @@ var SlideController = function($scope){
     $scope.selectIndex = function(index){
         $scope.selectedIndex = index;
     };
+
+    $scope.newSlide = {};
+
+    $scope.addSlide = function(){
+        $scope.newSlide.created = new Date();
+        $scope.items.push($scope.newSlide);
+        $scope.newSlide = {};
+
+        $location.path('/list');
+
+    };
+
 };
 
 tacApp.controller('slideController', SlideController);
@@ -36,6 +48,9 @@ var RouterConfig = function($routeProvider){
     $routeProvider.when('/list', {
         controller: 'slideController',
         templateUrl: 'partials/list.html'
+    }).when('/add', {
+        controller: 'slideController',
+        templateUrl: 'partials/add_template.html'
     }).otherwise({
         redirectTo: '/list'
     });
