@@ -23,6 +23,10 @@ var SlideController = function($scope){
     $scope.items = items;
 
     $scope.selectedIndex = 0;
+
+    $scope.selectIndex = function(index){
+        $scope.selectedIndex = index;
+    };
 };
 
 tacApp.controller('slideController', SlideController);
