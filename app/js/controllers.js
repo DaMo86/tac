@@ -16,7 +16,7 @@ var items = [
     ];
 
 
-var tacApp = angular.module('tacApp', []);
+var tacApp = angular.module('tacApp', ['ngRoute']);
 
 var SlideController = function($scope){
 
@@ -30,3 +30,16 @@ var SlideController = function($scope){
 };
 
 tacApp.controller('slideController', SlideController);
+
+
+var RouterConfig = function($routeProvider){
+    $routeProvider.when('/list', {
+        controller: 'slideController',
+        templateUrl: 'partials/list.html'
+    }).otherwise({
+        redirectTo: '/list'
+    });
+};
+
+
+tacApp.config(['$routeProvider', RouterConfig]);
