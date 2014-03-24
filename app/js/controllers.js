@@ -3,7 +3,7 @@ var tacApp = angular.module('tacApp', ['ngRoute', 'textAngular']);
 //Define Routes
 tacApp.config(['$routeProvider', defineRoutes]);
 
-var TemplateController = function($scope, $rootScope) {
+var TemplateController = function($scope, $rootScope, $location) {
     
     if($rootScope.items && $rootScope.items.length > 0) {
         $scope.selectedIndex = 0;
@@ -11,16 +11,17 @@ var TemplateController = function($scope, $rootScope) {
    
     var getLastIndex = function(items){
         console.log("calculate last index");
-        lastIndex = 0;
+        var lastIndex = 0;
         for (var i = items.length - 1; i >= 0; i--) {
             if (items[i].id > lastIndex) {
                 lastIndex = items[i].id;
             };
         };
+        return lastIndex;
     };
 
     $scope.items = $rootScope.items;
-    var lastIndex = getLastIndex($scope.items);
+    $scope.lastIndex = getLastIndex($scope.items);
 
     $scope.synchRootScope = function() {
         console.log("info", "Laueft");
@@ -31,16 +32,22 @@ var TemplateController = function($scope, $rootScope) {
         $scope.selectedIndex = index;
     };
 
-    $scope.addNewTemplate = function(title, description, content) {
-        lastIndex = lastIndex + 1;
+    $scope.newTemplate = {};
+
+    $scope.addNewTemplate = function() {
+        var lastIndex = $scope.lastIndex + 1;
+        console.log("LastIndex: " + lastIndex);
+        console.log("newTemplate: " + $scope.newTemplate);
         $scope.items.push({"id": lastIndex,
-                "title": title,
+                "title": $scope.newTemplate.title,
                 "created": new Date(),
-                "content": content,
-                "visible": true,
-                "desc" : description
+                "content": $scope.newTemplate.content,
+                "visible": $scope.newTemplate.visible,
+                "desc" : $scope.newTemplate.description
             });
+        $scope.newTemplate = {};
         $scope.synchRootScope;
+        $location.path("/list");
     };
     
 
