@@ -21,6 +21,8 @@ var tacApp = angular.module('tacApp', []);
 var SlideController = function($scope){
 
     $scope.items = items;
+
+    $scope.selectedIndex = 0;
 };
 
 tacApp.controller('slideController', SlideController);
