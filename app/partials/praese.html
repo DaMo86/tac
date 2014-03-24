@@ -1,0 +1,45 @@
+<div id="page">
+    <div id="top_navigation">
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/list">Administration</a></li>
+                        <li  class="active"><a href="#">Pr&auml;sentation starten</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="header" class="row">
+        <div class="col-md-12">
+
+            <h1>Cofinpro - AngularJS</h1>
+            <h2>{{selectedItem.title}}</h2>
+        </div>
+    </div>
+    <div id="content"  class="row">
+        <div class="col-md-12">
+            {{selectedItem.desc}}
+        </div>
+    </div>
+
+
+
+    <div id="navigation" class="row">
+        <div class="col-md-12">
+            <hr />
+            <button ng-click="showPrevious()">Zur&uuml;ck</button>
+            <button ng-click="showNext()">Vor</button>
+            <hr />
+        </div>
+    </div>
+
+    <div id="footer"  class="row">
+        <div class="col-md-12">
+            Daniel Moritz, Conrad Finkelstein - Confinpro AG
+        </div>
+    </div>
+</div>
+

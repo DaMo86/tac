@@ -13,6 +13,39 @@
             
             body {
                 background-color: #f7f7f7;
+                font-family: Arial;
+            }
+            
+            #top_navigation {
+                background-color: black;
+            }
+            
+            #page {
+                margin:0.5em;
+                border:1px solid black;
+            }
+            
+            h1 {
+                margin:0;
+                padding:0;
+                font-size: 2em;
+                font-weight: bold;
+                color: orange;
+            }
+            
+            h2 {
+                font-size: 1.8em;
+                text-decoration: underline;
+            }
+            
+            #header, #content, #navigation {
+                padding:1em;
+            }
+            
+            #footer {
+                text-align: right;
+                margin-right: 1em;
+                margin-bottom: 1em;
             }
             
             .ta-editor {
@@ -25,7 +58,7 @@
             
         </style>
     </head>
-    <body ng-controller="InitController">
+    <body>
         
         
         <div ng-view>

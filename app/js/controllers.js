@@ -1,33 +1,7 @@
-var tacApp = angular.module('tacApp', ['ngRoute', 'textAngular']);
-
-//Define Routes
-tacApp.config(['$routeProvider', defineRoutes]);
-
-var TemplateController = function($scope, $rootScope) {
+var TemplateService = function() {
+    var service = {};
     
-    if($rootScope.items && $rootScope.items.length > 0) {
-        $scope.selectedIndex = 0;
-    }
-   
-    $scope.items = $rootScope.items;
-
-    $scope.synchRootScope = function() {
-        console.log("info", "Laueft");
-        $rootScope.items = $scope.items;
-    };
-    
-    $scope.selectIndex = function(index) {
-        $scope.selectedIndex = index;
-    };
-    
-};
-
-tacApp.controller('templateController', TemplateController);
-
-tacApp.controller('InitController', function($rootScope) {
-
-    if (!$rootScope.items) {
-        $rootScope.items = [
+    var items = [
             {"id": 1,
                 "title": "Introduction",
                 "created": new Date(),
@@ -42,29 +16,81 @@ tacApp.controller('InitController', function($rootScope) {
                 "visible": true,
                 "desc" : "Lalalalal2"
             }
-        ];
+        ]; 
+    
+    service.getItems = function() {
+        return items;  
+    };
+    
+    return service;
+};
+
+
+
+
+
+var TemplateController = function($scope, templateService) {
+    
+    $scope.items = templateService.getItems();
+    $scope.selectedIndex = 0;
+    
+    $scope.selectIndex = function(index) {
+        $scope.selectedIndex = index;
+    };
+    
+};
+
+var PresenterController = function($scope, templateService,$routeParams,$location) {
+    $scope.items = templateService.getItems();
+    
+    var isPageIdNumeric = $.isNumeric($routeParams.startId);
+    var isPageIdValid = isPageIdNumeric && 
+            ($routeParams.startId >= 1 && $routeParams.startId <= $scope.items.length);
+    
+    var isStartPage = isPageIdNumeric && $routeParams.startId+1 === 1;
+    var isEndPage = isPageIdNumeric && $routeParams.startId-1 === $scope.items.length;
+    
+    if(isPageIdValid) {
+        $scope.selectedIndex = $routeParams.startId-1;
+        $scope.selectedItem = $scope.items[$scope.selectedIndex]; 
     }
+    else if($scope.items.length > 0 && (isStartPage || !isPageIdNumeric)) {
+        $location.path("/start/1");
+    }
+    else if($scope.items.length > 0 && isEndPage) {
+        $location.path("/start/"+$scope.items.length);
+    }
+    else {
+        $location.path("/list");
+    }
+    
+    $scope.showPrevious = function() {
+       if($scope.selectedIndex > 0) {
+           var previousPage = $scope.selectedIndex;
+           $location.path("/start/"+previousPage);
+       } 
+       else {
+           $location.path("/start/1");
+       }
+    };
+    
+    $scope.showNext = function() {
+        if($scope.selectedIndex < $scope.items.length) {
+           var nextPage = $scope.selectedIndex+2;
+           $location.path("/start/"+nextPage);
+       }
+    };
+    
+};
 
-});
+var tacApp = angular.module('tacApp', ['ngRoute', 'textAngular']);
 
+//Define Routes
+tacApp.config(['$routeProvider', defineRoutes]);
 
+//Define Services
+tacApp.factory('templateService', TemplateService);
 
-
-/*
- 
- tacApp.controller('SlidesCtrl', function($scope) {
- 
- 
- 
- var resetOtherEditFlags = function() {
- for (slide in slides) {
- if (slide == currentSlide) {
- slide.isEdited = true;
- }
- else {
- slide.isEdited = false
- }
- }
- 
- };
- });*/
+//Define Controller
+tacApp.controller('templateController', TemplateController);
+tacApp.controller('presenterController', PresenterController);
