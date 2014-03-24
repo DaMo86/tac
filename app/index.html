@@ -6,7 +6,16 @@
 
     </head>
     <body ng-controller="slideController">
-        Anzahl der Slides: {{items.length}}
+
+        <table>
+            <tr ng-repeat="item in items">
+                <td >{{item.id}}</td>
+                <td ng-bind="item.created| date : 'yyyy-MM-dd HH:mm:ss'" ></td>
+                <td>{{item.title}}</td>
+                <td>{{item.desc}}</td>
+                <td ><span ng-if="item.visible">&bull;</span></td>
+            </tr>
+        </table>
 
         <script src="lib/jquery/jquery-1.10.2.js"></script>
         <script src="lib/angular/angular.min.js"></script>
