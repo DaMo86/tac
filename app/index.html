@@ -1,13 +1,15 @@
 <!doctype html>
-<html lang="en" >
+<html lang="en" ng-app="tacApp">
     <head>
         <meta charset="utf-8">
         <title>T@C - AngularJS</title>
 
     </head>
-    <body >
+    <body ng-controller="slideController">
+        Anzahl der Slides: {{items.length}}
 
         <script src="lib/jquery/jquery-1.10.2.js"></script>
         <script src="lib/angular/angular.min.js"></script>
+        <script src="js/controllers.js"></script>
     </body>
 </html>
