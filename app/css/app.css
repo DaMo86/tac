@@ -1,8 +1,6 @@
 /* app css stylesheet */
 
-body {
-    padding-top: 20px;
-}
+
 
 .headrow{
     min-width: 100px;
@@ -26,7 +24,8 @@ body {
 }
 
 #top_navigation {
-    background-color: black;
+    background-color:black;
+    padding:0;
 }
 
 #page {
@@ -47,12 +46,34 @@ h2 {
     text-decoration: underline;
 }
 
-#header, #content, #navigation {
-    padding:1em;
+/*#header, #content, #navigation, #cofinpro {
+    margin:1em;
+}*/
+
+#cofinpro {
+    margin-top:0;
+    margin-bottom:0;
+    background-color: #f5821f;
 }
+
+#add_template {
+    padding-top: 1em;
+}
+
+/*
+#cofinpro {
+    padding:1em;
+}*/
 
 #add_button {
     background-color: limegreen;
+}
+
+.navbar {
+    margin:0;
+    width: 100%;
+    /*padding:0;*/
+    
 }
 
 #footer {
@@ -68,4 +89,5 @@ h2 {
     font-family: inherit;
     font-size: 100%;
 }
+
 

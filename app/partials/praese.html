@@ -1,15 +1,13 @@
-
 <div id="header" class="row">
     <div class="col-md-12">
-
-        <h1>Cofinpro - AngularJS</h1>
         <h2>{{selectedItem.title}}</h2>
+        <div style="padding-bottom:1em;">
+            <strong>{{selectedItem.desc}}</strong>
+        </div>
     </div>
 </div>
 <div id="content"  class="row">
-    <div class="col-md-12">
-        {{selectedItem.desc}}
-    </div>
+    <div class="col-md-12" ng-bind-html="selectedItem.content"></div>
 </div>
 
 
