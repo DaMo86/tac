@@ -31,15 +31,3 @@ var SlideController = function($scope){
 
 tacApp.controller('slideController', SlideController);
 
-
-var RouterConfig = function($routeProvider){
-    $routeProvider.when('/list', {
-        controller: 'slideController',
-        templateUrl: 'partials/list.html'
-    }).otherwise({
-        redirectTo: '/list'
-    });
-};
-
-
-tacApp.config(['$routeProvider', RouterConfig]);

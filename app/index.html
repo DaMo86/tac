@@ -5,9 +5,24 @@
         <title>T@C - AngularJS</title>
 
     </head>
-    <body>
+    <body ng-controller="slideController">
 
-      <div ng-view></div>
+        <table border="1">
+            <tr ng-repeat="item in items" ng-click="selectIndex($index)">
+                <td >{{item.id}}</td>
+                <td ng-bind="item.created| date : 'yyyy-MM-dd HH:mm:ss'" ></td>
+                <td>{{item.title}}</td>
+                <td>{{item.desc}}</td>
+                <td ><span ng-if="item.visible">&bull;</span></td>
+            </tr>
+        </table>
+
+        <br />
+
+        Titel: <input type="text" ng-model="items[selectedIndex].title" /><br/>
+        Beschreibung: <input type="text" ng-model="items[selectedIndex].desc" /><br/>
+        Sichtbar: <input type="checkbox" ng-model="items[selectedIndex].visible" /><br/>
+        Content: <input type="text" ng-model="items[selectedIndex].content" /><br/>
 
         <script src="lib/jquery/jquery-1.10.2.js"></script>
         <script src="lib/angular/angular.min.js"></script>
