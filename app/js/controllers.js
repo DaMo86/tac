@@ -41,7 +41,7 @@ var SlideController = function($scope, $location){
 
 };
 
-var PresenterController = function($routeParams) {
+var PresenterController = function($scope, $routeParams) {
     var index = $routeParams.slide - 1;
     $scope.selectedSlide = items[index];
 };
